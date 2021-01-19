@@ -1,2 +1,2 @@
-# demo
-nodejs-react
+# Demo
+nodejs vs react-native
