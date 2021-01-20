@@ -8,10 +8,12 @@ target 'UserProfile' do
 
   use_react_native!(:path => config["reactNativePath"])
 
-  target 'UserProfileTests' do
-    inherit! :complete
-    # Pods for testing
-  end
+  #permissions
+  permissions_path = '../node_modules/react-native-permissions/ios'
+
+  pod 'Permission-Camera', :path => "#{permissions_path}/Camera"
+  pod 'Permission-PhotoLibrary', :path => "#{permissions_path}/PhotoLibrary"
+  pod 'Permission-LocationWhenInUse', :path => "#{permissions_path}/LocationWhenInUse"
 
   # Enables Flipper.
   #
@@ -20,14 +22,5 @@ target 'UserProfile' do
   use_flipper!
   post_install do |installer|
     flipper_post_install(installer)
-  end
-end
-
-target 'UserProfile-tvOS' do
-  # Pods for UserProfile-tvOS
-
-  target 'UserProfile-tvOSTests' do
-    inherit! :search_paths
-    # Pods for testing
   end
 end
