@@ -10,6 +10,8 @@ yarn-error.log
 
 package-lock.json
 
+.vscode/
+
 # BUCK
 buck-out/
 \.buckd/
