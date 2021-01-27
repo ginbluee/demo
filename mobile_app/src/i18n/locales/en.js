@@ -15,4 +15,11 @@ export default {
     already_account: 'Already have an account',
     sign_in: 'Sign In',
   },
+  LoginScreen: {
+    username: 'Username',
+    password: 'Password',
+    sign_in_to_continue: 'Sign in to continue',
+    forgot_password: 'Forgot password?',
+    dont_have_account: 'Don’t have an account',
+  },
 };

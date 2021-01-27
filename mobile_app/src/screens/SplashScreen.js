@@ -2,8 +2,8 @@ import React, {useEffect} from 'react';
 import {View, Image, Dimensions} from 'react-native';
 import {ScaledSheet} from "react-native-size-matters";
 import Splash from 'react-native-splash-screen'
-import {on_boarding} from "../../assets/images";
-import {SCREEN_NAME} from "../utils/Const";
+import {SCREEN_NAME} from "@app/utils/Const";
+import {on_boarding} from "@app/assets/images";
 
 const {width, height} = Dimensions.get('window');
 

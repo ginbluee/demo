@@ -1,13 +1,11 @@
 import React from 'react';
-import {View, Text, Image, TouchableOpacity, Dimensions} from 'react-native';
+import {View, Text, Image, TouchableOpacity} from 'react-native';
 import {moderateScale, scale, ScaledSheet} from "react-native-size-matters";
 import {CommonColors, CommonSize, Fonts} from "@app/utils/CommonStyles";
-import {ic_facebook, ic_google, login_social_bg, login_social_image} from "../../../assets/images";
-import I18n from '../../i18n';
-import Space from "../../components/Space";
+import {ic_facebook, ic_google, login_social_bg, login_social_image} from "@app/assets/images";
+import I18n from '@app/i18n';
 import {SCREEN_NAME} from "@app/utils/Const";
-
-const {width, height} = Dimensions.get('window');
+import {Space, Button} from "@app/components";
 
 const LoginSocialScreen = (props) => {
   const renderBackground = () => {
@@ -39,32 +37,25 @@ const LoginSocialScreen = (props) => {
   const renderContent = () => {
     return (
       <View style={styles.content}>
-        {buttonLoginSocial(ic_facebook, I18n.t('LoginSocialScreen.login_fb'))}
+        <Button
+          icon={ic_facebook}
+          title={I18n.t('LoginSocialScreen.login_fb')}
+        />
         <Space height={15}/>
-        {buttonLoginSocial(ic_google, I18n.t('LoginSocialScreen.login_gg'), CommonColors.white, CommonColors.gray_1)}
+        <Button
+          icon={ic_google}
+          title={I18n.t('LoginSocialScreen.login_gg')}
+          bgColor={CommonColors.white}
+          textColor={CommonColors.gray_1}
+        />
         {renderOr()}
-        {buttonLoginSocial(null, I18n.t('LoginSocialScreen.sign_up').toUpperCase(), CommonColors.black)}
+        <Button
+          title={I18n.t('LoginSocialScreen.sign_up').toUpperCase()}
+          onPress={goToRegister}
+          bgColor={CommonColors.black}
+        />
         {renderLogin()}
       </View>
-    );
-  };
-
-  const buttonLoginSocial = (icon, title, bgColor, textColor) => {
-    return (
-      <TouchableOpacity
-        style={[styles.buttonLoginSocial, bgColor ? {backgroundColor: bgColor} : null]}
-        onPress={() => {}}
-      >
-        <Image
-          source={icon}
-          style={styles.icon_login}
-        />
-        <Text
-          style={[styles.textLoginSocial, textColor ? {color: textColor} : null, !icon ? {...Fonts.defaultBold} : null]}
-        >
-          {title}
-        </Text>
-      </TouchableOpacity>
     );
   };
 
@@ -96,6 +87,10 @@ const LoginSocialScreen = (props) => {
     props.navigation.navigate(SCREEN_NAME.LOGIN_SCREEN);
   };
 
+  const goToRegister = () => {
+    props.navigation.navigate(SCREEN_NAME.REGISTER_SCREEN);
+  };
+
   return (
     <View style={styles.container}>
       {renderBackground()}
@@ -117,8 +112,8 @@ const styles = ScaledSheet.create({
     position: 'absolute',
   },
   image: {
-    width,
-    height,
+    width: CommonSize.screenWidth,
+    height: CommonSize.screenHeight,
   },
   header: {
     position: 'absolute',
@@ -136,26 +131,6 @@ const styles = ScaledSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-end',
     paddingBottom: CommonSize.paddingBottom + scale(25),
-  },
-  buttonLoginSocial: {
-    flexDirection: 'row',
-    width: width - scale(50),
-    height: '48@s',
-    borderRadius: '25@s',
-    backgroundColor: CommonColors.facebook,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  icon_login: {
-    position: 'absolute',
-    left: '20@s',
-    width: '24@s',
-    height: '25@s',
-  },
-  textLoginSocial: {
-    ...Fonts.defaultMedium,
-    fontSize: '15@ms',
-    color: CommonColors.white,
   },
   viewOr: {
     flexDirection: 'row',

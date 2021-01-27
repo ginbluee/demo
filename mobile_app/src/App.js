@@ -1,6 +1,6 @@
 import React from 'react';
 import {Provider} from 'react-redux';
-import store from './redux/store';
+import store from "@app/redux/store";
 import StackNavigator from "./StackNavigator";
 // import {PersistGate} from 'redux-persist/integration/react'
 // import {persistStore} from 'redux-persist';
